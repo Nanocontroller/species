@@ -1,18 +1,50 @@
-<!DOCTYPE html>
-<html>
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <!-- we import arjs version without NFT but with marker + location based support -->
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-  <body style="margin : 0px; overflow: hidden;">
-    <a-scene embedded arjs>
-      
-        <a-entity
-          position="0 0 0"
-          scale="0.05 0.05 0.05"
-          gltf-model="https://raw.githack.com/ltg-uic/species/master/models/species_08.glb">
-        ></a-entity>
-      
-      <a-entity camera></a-entity>
-    </a-scene>
-  </body>
-</html>
+	<a-scene
+  gesture-detector
+  xrextras-almost-there
+  xrextras-loading
+  xrextras-runtime-error
+  xrweb>
+  <!-- We can define assets here to be loaded when A-Frame initializes -->
+  <a-assets>
+   
+    <a-asset-item id="species08" src="https://raw.githack.com/ltg-uic/species/master/models/species_08.glb"></a-asset-item>
+  </a-assets>
+  <!-- The raycaster will emit mouse events on scene objects specified with the cantap class -->
+  <a-camera
+    id="camera"
+    position="0 8 8"
+    raycaster="objects: .cantap"
+    cursor="fuse: false; rayOrigin: mouse;">
+  </a-camera>
+  <a-entity
+    light="
+      type: directional;
+      intensity: 0.8;
+      castShadow: true;
+      shadowMapHeight:2048;
+      shadowMapWidth:2048;
+      shadowCameraTop: 10;
+      target: #model;"
+    xrextras-attach="target: model; offset: 1 15 3;"
+    shadow>
+  </a-entity>
+  <a-light type="ambient" intensity="1"></a-light>
+  <a-entity 
+    id="model" 
+    gltf-model="#species08" 
+    class="cantap" 
+    hold-drag 
+    two-finger-spin 
+    pinch-scale 
+    scale="3 3 3" 
+    shadow="receive: false">
+  </a-entity>
+  <a-plane
+    id="ground" 
+    rotation="-90 0 0" 
+    width="1000" 
+    height="1000" 
+    material="shader: shadow" 
+    shadow>
+  </a-plane>
+</a-scene>
