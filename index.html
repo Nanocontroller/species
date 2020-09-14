@@ -52,7 +52,8 @@
                   alt="WallCology Species 01"
                   shadow-intensity=".5"
                   autoplay animation
-                  camera-target "auto auto auto"
+                  camera-controls
+                  camera-orbit "calc(30deg - env(window-scroll-y) * 60deg) 75deg 1.5m" 
                   interaction-prompt="auto"
                   auto-rotate ar>
     </model-viewer>
