@@ -32,8 +32,6 @@
     <div id="card">
     <!-- All you need to put beautiful, interactive 3D content on your site: -->
     
-    <section class="attribution"><span> <h1>Species 02</h1></span></section>
-    
     <model-viewer src="models/species_02_rs.glb"
                   alt="WallCology Species 02"
                   autoplay animation
@@ -45,10 +43,16 @@
                   interaction-prompt="auto"
                   auto-rotate ar>
     </model-viewer>
-
+      
+      <model-viewer id="toggle-model" src="models/species_02_rs.glb" alt="A species model of wallcology" shadow-intensity="1" camera-controls auto-rotate></model-viewer>
+<script>
+    const models = ['species_02_rs.glb', 'species_06_rs.glb'];
+    const toggleModel = document.querySelector('#toggle-model');
+    let j = 0;
+    setInterval(() => toggleModel.setAttribute('src', `./models/${models[j++ % 2]}`), 2000);
+</script>
+      
   </div>
-
-  
   
   
   <!-- 💁 Include both scripts below to support all browsers! -->
