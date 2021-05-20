@@ -44,12 +44,19 @@
                   auto-rotate ar>
     </model-viewer>
       
-      <model-viewer id="toggle-model" src="models/species_02_rs.glb" alt="A species model of wallcology" shadow-intensity="1" camera-controls auto-rotate></model-viewer>
-<script>
-    const models = ['species_02_rs.glb', 'species_06_rs.glb'];
-    const toggleModel = document.querySelector('#toggle-model');
-    let j = 0;
-    setInterval(() => toggleModel.setAttribute('src', `./models/${models[j++ % 2]}`), 2000);
+    <model-viewer 
+                  id="toggle-model" 
+                  src="models/species_02_rs.glb" 
+                  alt="A species model of wallcology" 
+                  shadow-intensity="1" 
+                  camera-controls 
+                  interaction-prompt="auto"
+                  auto-rotate></model-viewer>
+    <script>
+        const models = ['species_02_rs.glb', 'species_06_rs.glb'];
+         const toggleModel = document.querySelector('#toggle-model');
+        let j = 0;
+    setInterval(() => toggleModel.setAttribute('src', `./models/${models[j++ % 2]}`), 3000);
 </script>
       
   </div>
